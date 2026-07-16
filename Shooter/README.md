@@ -1,4 +1,4 @@
-# 🚀 Space Shooter
+# Space Shooter
 
 A 2D space shooter game made with Godot.
 
