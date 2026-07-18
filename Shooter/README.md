@@ -1,4 +1,4 @@
-# 🚀 Space Shooter
+# Space Shooter
 
 A 2D space shooter game made with Godot.
 
@@ -14,7 +14,7 @@ A 2D space shooter game made with Godot.
 - Shoot: Space
 
 ## Engine
-- Godot Engine
+- Python Arcade Engine
 
 ## Status
-🚧 Work in Progress
+- Work in Progress
