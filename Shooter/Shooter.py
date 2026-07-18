@@ -267,6 +267,13 @@ class GameWindow(arcade.Window):
         self.player_angle = 0
         self.player_radius = 100 * PLAYER_SCALE
 
+        self.player_sprite = arcade.Sprite(
+            "Assets/Spc1.png",
+            scale=0.04
+            )
+        self.player_list = arcade.SpriteList()
+        self.player_list.append(self.player_sprite)
+
         self.bullets = []
         self.enemy_bullets =[]
         self.shoot_cooldown = 0
@@ -290,15 +297,17 @@ class GameWindow(arcade.Window):
             self.draw_game_over()
             return
 
-        arcade.draw_triangle_filled(
-            self.player_x + math.cos(math.radians(self.player_angle)) * self.player_radius * 1.5,
-            self.player_y + math.sin(math.radians(self.player_angle)) * self.player_radius * 1.5,
-            self.player_x + math.cos(math.radians(self.player_angle + 150)) * self.player_radius,
-            self.player_y + math.sin(math.radians(self.player_angle + 150)) * self.player_radius,
-            self.player_x + math.cos(math.radians(self.player_angle - 150)) * self.player_radius,
-            self.player_y + math.sin(math.radians(self.player_angle - 150)) * self.player_radius,
-            arcade.color.WHITE
-        )
+       # arcade.draw_triangle_filled(
+        #    self.player_x + math.cos(math.radians(self.player_angle)) * self.player_radius * 1.5,
+         #   self.player_y + math.sin(math.radians(self.player_angle)) * self.player_radius * 1.5,
+          #  self.player_x + math.cos(math.radians(self.player_angle + 150)) * self.player_radius,
+           # self.player_y + math.sin(math.radians(self.player_angle + 150)) * self.player_radius,
+           # self.player_x + math.cos(math.radians(self.player_angle - 150)) * self.player_radius,
+           # self.player_y + math.sin(math.radians(self.player_angle - 150)) * self.player_radius,
+           # arcade.color.WHITE
+        #)
+
+        self.player_list.draw()
 
         for bullet in self.bullets:
             bullet.draw()
@@ -326,6 +335,10 @@ class GameWindow(arcade.Window):
 
     def on_update(self, delta_time):
         self.shoot_cooldown -= delta_time
+
+        self.player_sprite.center_x = self.player_x
+        self.player_sprite.center_y = self.player_y
+        self.player_sprite.angle = self.player_angle + 90
 
         if self.game_over:
             return #stops all gamelogic when game_over
